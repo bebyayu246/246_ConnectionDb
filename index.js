@@ -8,3 +8,11 @@ const { Pool } = pg;
 app.use(express.json());
 app.use(
     express.urlencoded({ extended: true }))
+    
+const pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'mahasiswa',
+    password: 'ibey030924',
+    port: 5432,
+});

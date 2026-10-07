@@ -8,7 +8,7 @@ const { Pool } = pg;
 app.use(express.json());
 app.use(
     express.urlencoded({ extended: true }))
-    
+
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -16,3 +16,11 @@ const pool = new Pool({
     password: 'ibey030924',
     port: 5432,
 });
+
+app.get('/', (req, res, next) => {
+   console.log("TEST DATA :");
+   pool.query('SELECT * from biodata')
+    .then((testData) => {
+        console.log(testData);
+        res.send(testData.rows);
+    })
